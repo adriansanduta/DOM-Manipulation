@@ -20,7 +20,11 @@ async function fetchUserData(id) {
 
 // Put your code here
 // ------------------
+async function main() {
+  console.log(await fetchFollowerIds());
+}
 
+main();
 // ------------------
 
 // Fake data - do not access USERS directly in your solution
