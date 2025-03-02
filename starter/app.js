@@ -21,18 +21,22 @@ async function fetchUserData(id) {
 // Put your code here
 // ------------------
 async function main() {
-  const users = (await fetchFollowerIds()).map(id => fetchUserData(id));
+  const userIds = await fetchFollowerIds();
+  const users = userIds.map(id => fetchUserData(id));
   const usersData = await Promise.all(users); 
   document.querySelector(".followers").innerHTML = usersData.map(
-  (user) => `<div class="profile">
+  (user) => userHTML(user)).join("");
+}
+
+function userHTML(user) {
+  return `<div class="profile">
         <img class="profile__avatar" src=${user.avatar} alt="avatar" />
         <div class="profile__info">
           <p class="profile__username">${user.username}</p>
           <p class="profile__bio">${user.bio}</p>
         </div>
         <button class="profile__unfollow">Remove</button>
-      </div>`
-  ).join("");
+      </div>`;
 }
 
 main();
