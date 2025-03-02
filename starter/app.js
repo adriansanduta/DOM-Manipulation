@@ -21,9 +21,16 @@ async function fetchUserData(id) {
 // Put your code here
 // ------------------
 async function main() {
+  //Fetch user ids
   const userIds = await fetchFollowerIds();
+
+  //Get user data in promise
   const users = userIds.map(id => fetchUserData(id));
+
+//Wait for user data
   const usersData = await Promise.all(users); 
+
+  // Turn user data into HTML
   document.querySelector(".followers").innerHTML = usersData.map(
   (user) => userHTML(user)).join("");
 }
