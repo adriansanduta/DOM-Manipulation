@@ -25,10 +25,10 @@ async function main() {
   const usersData = await Promise.all(users); 
   document.querySelector(".followers").innerHTML = usersData.map(
   (user) => `<div class="profile">
-        <img class="profile__avatar" src="https://www.gravatar.com/avatar/3456?d=identicon&s=64">
+        <img class="profile__avatar" src=${user.avatar} alt="avatar" />
         <div class="profile__info">
-          <p class="profile__username">David Bragg</p>
-          <p class="profile__bio">Software Engineer at Canva</p>
+          <p class="profile__username">${user.username}</p>
+          <p class="profile__bio">${user.bio}</p>
         </div>
         <button class="profile__unfollow">Remove</button>
       </div>`
