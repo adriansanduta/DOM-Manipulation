@@ -21,7 +21,8 @@ async function fetchUserData(id) {
 // Put your code here
 // ------------------
 async function main() {
-  console.log(await fetchFollowerIds());
+  const users = (await fetchFollowerIds()).map(id => fetchUserData(id));
+  console.log(await Promise.all(users)); 
 }
 
 main();
